@@ -1,0 +1,13 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.greengramver2.user.UserMapper">
+
+    <insert id="postUser" keyProperty="userId" useGeneratedKeys="true">
+        INSERT INTO user
+        (uid, upw, nm, pic)
+        VALUES
+        (#{uid}, #{upw}, #{nm}, #{pic})
+    </insert>
+
+</mapper>
