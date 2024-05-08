@@ -1,0 +1,37 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.greengram.feed.FeedMapper">
+
+    <insert id="postFeed" keyProperty="feedId" useGeneratedKeys="true">
+        INSERT INTO feed
+        (writer_id, contents, location)
+        VALUES
+        (#{userId}, #{contents}, #{location})
+    </insert>
+
+    <insert id="postFeedPics">
+        INSERT INTO feed_pics
+        (feed_id, pic)
+        VALUES
+        <foreach item="a" collection="fileNames" separator=",">
+            (#{feedId}, #{a})
+        </foreach>
+        <!--item아니고 pic으로 하면??-->
+    </insert>
+
+    <select id="getFeed">
+        SELECT A.feed_id AS feedId, A.writer_id AS writerId, B.nm AS writerNm, B.pic AS writerPic, A.contents, A.location, A.created_at AS createdAt
+        FROM feed A
+        INNER JOIN user B
+        ON A.writer_id=B.user_id
+        ORDER BY A.created_at DESC
+        LIMIT #{startIdx}, #{len}
+    </select>
+
+    <select id="getFeedPicsByFeedId">
+        SELECT pic
+        FROM feed_pics
+        WHERE feed_id=#{feedId}
+    </select>
+</mapper>
