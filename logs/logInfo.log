@@ -12509,3 +12509,56 @@ org.apache.ibatis.reflection.ReflectionException: There is no getter for propert
 |----------------|-----------|--------|--------|---|----|
 |----------------|-----------|--------|--------|---|----|
 [0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m File Watcher] [org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener] [36mRestarting due to 26 class path changes (0 additions, 0 deletions, 26 modifications)[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m Thread-5] [org.apache.coyote.http11.Http11NioProtocol] [36mStopping ProtocolHandler ["http-nio-8080"][0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m Thread-5] [com.zaxxer.hikari.HikariDataSource] [36mHikariPool-1 - Shutdown initiated...[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m Thread-5] [com.zaxxer.hikari.HikariDataSource] [36mHikariPool-1 - Shutdown completed.[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [com.green.greengram.GreengramVer2Application] [36mStarting GreengramVer2Application using Java 17.0.11 with PID 11004 (D:\2024_BACK_JI\GreengramVer2\build\classes\java\main started by Administrator in D:\2024_BACK_JI\GreengramVer2)[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [com.green.greengram.GreengramVer2Application] [36mNo active profile set, falling back to 1 default profile: "default"[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [36mTomcat initialized with port 8080 (http)[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [org.apache.coyote.http11.Http11NioProtocol] [36mInitializing ProtocolHandler ["http-nio-8080"][0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [org.apache.catalina.core.StandardService] [36mStarting service [Tomcat][0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [org.apache.catalina.core.StandardEngine] [36mStarting Servlet engine: [Apache Tomcat/10.1.20][0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] [36mInitializing Spring embedded WebApplicationContext[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [36mRoot WebApplicationContext: initialization completed in 292 ms[0;39m
+[2024-05-09 18:38:58 [32mINFO [0;39m restartedMain] [org.springframework.boot.autoconfigure.web.servlet.WelcomePageHandlerMapping] [36mAdding welcome page: class path resource [static/index.html][0;39m
+[2024-05-09 18:38:59 [32mINFO [0;39m restartedMain] [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] [36mLiveReload server is running on port 35729[0;39m
+[2024-05-09 18:38:59 [32mINFO [0;39m restartedMain] [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver] [36mExposing 1 endpoint(s) beneath base path '/actuator'[0;39m
+[2024-05-09 18:38:59 [32mINFO [0;39m restartedMain] [org.apache.coyote.http11.Http11NioProtocol] [36mStarting ProtocolHandler ["http-nio-8080"][0;39m
+[2024-05-09 18:38:59 [32mINFO [0;39m restartedMain] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [36mTomcat started on port 8080 (http) with context path ''[0;39m
+[2024-05-09 18:38:59 [32mINFO [0;39m restartedMain] [com.green.greengram.GreengramVer2Application] [36mStarted GreengramVer2Application in 0.532 seconds (process running for 1237.675)[0;39m
+[2024-05-09 18:38:59 [32mINFO [0;39m restartedMain] [org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener] [36mCondition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   SpringDocConfiguration#springdocBeanFactoryPostProcessor matched:
+      - @ConditionalOnClass found required class 'org.springframework.boot.context.properties.bind.BindResult' (OnClassCondition)
+      - AnyNestedCondition 1 matched 1 did not; NestedCondition on CacheOrGroupedOpenApiCondition.OnCacheDisabled found matching nested conditions @ConditionalOnProperty (springdoc.cache.disabled) matched, @ConditionalOnMissingBean (types: org.springdoc.core.models.GroupedOpenApi; SearchStrategy: all) did not find any beans; NestedCondition on CacheOrGroupedOpenApiCondition.OnMultipleOpenApiSupportCondition AnyNestedCondition 0 matched 2 did not; NestedCondition on MultipleOpenApiSupportCondition.OnActuatorDifferentPort found non-matching nested conditions Management Port actual port type (SAME) did not match required type (DIFFERENT), @ConditionalOnProperty (springdoc.show-actuator) did not find property 'springdoc.show-actuator'; NestedCondition on MultipleOpenApiSupportCondition.OnMultipleOpenApiSupportCondition AnyNestedCondition 0 matched 2 did not; NestedCondition on MultipleOpenApiGroupsCondition.OnGroupConfigProperty @ConditionalOnProperty (springdoc.group-configs[0].group) did not find property 'springdoc.group-configs[0].group'; NestedCondition on MultipleOpenApiGroupsCondition.OnGroupedOpenApiBean @ConditionalOnBean (types: org.springdoc.core.models.GroupedOpenApi; SearchStrategy: all) did not find any beans of type org.springdoc.core.models.GroupedOpenApi (CacheOrGroupedOpenApiCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+[0;39m
