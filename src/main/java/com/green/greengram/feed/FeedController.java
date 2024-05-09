@@ -34,7 +34,7 @@ public class FeedController {
     @GetMapping
     public ResultDto<List<FeedGetRes>> getFeed(@ParameterObject @ModelAttribute FeedGetReq p){
         //리턴타입을 프론트가 요구하는 방향으로 맞춰주어야 함
-        List<FeedGetRes> result = service.getFeed(p); //토할거 같애................
+        List<FeedGetRes> result = service.getFeed(p);
         return ResultDto.<List<FeedGetRes>>builder()
                 .status(HttpStatus.OK)
                 .resultMsg("성공적으로 업로드 하였습니다.")
@@ -43,7 +43,3 @@ public class FeedController {
     }
 
 }
-//postFeed
-//postFeedPics
-//getFeed
-//getFeedPicsByFeedId

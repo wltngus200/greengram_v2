@@ -5,14 +5,10 @@ import com.green.greengram.common.model.SignInRes;
 import com.green.greengram.user.model.SignInPostReq;
 import com.green.greengram.user.model.SignUpPostReq;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
@@ -36,6 +32,7 @@ public class UserController {
     @PostMapping("sign-in")
     @Operation(summary="인증처리")
     public ResultDto<SignInRes> postSignIn(@RequestBody SignInPostReq p){
+        System.out.println(p);
         SignInRes result=service.postSignIn(p);
 
         return ResultDto.<SignInRes>builder()

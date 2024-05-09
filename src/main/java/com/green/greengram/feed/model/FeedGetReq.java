@@ -2,24 +2,18 @@ package com.green.greengram.feed.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.green.greengram.common.GlobalConst;
+import com.green.greengram.common.model.Paging;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.BindParam;
 
 @Getter
 @Setter
-public class FeedGetReq {
-    private int page;
-//    private long loginedUserId;
+public class FeedGetReq extends Paging {
+    private long signedUserId;
 
-    //피드는 인피니티 스크롤이기 때문에 숫자는 필요 X
-    @JsonIgnore
-    private int startIdx;
-    @JsonIgnore
-    private int len;
-
-    public void setPage(int page) {
-        this.page = page;
-        this.len=GlobalConst.FEED_PAGE_ITEM_LEN;
-        this.startIdx=(this.page-1)*this.len;
+    public FeedGetReq(Integer page, Integer size,@BindParam("loginedUserId") long signedUserId){
+        super(page, size ==null? GlobalConst.FEED_PAGING_SIZE:size);
+        this.signedUserId=signedUserId;
     }
 }

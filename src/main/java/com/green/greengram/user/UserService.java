@@ -6,8 +6,6 @@ import com.green.greengram.user.model.SignInPostReq;
 import com.green.greengram.user.model.SignUpPostReq;
 import com.green.greengram.user.model.User;
 import lombok.RequiredArgsConstructor;
-import lombok.Singular;
-import lombok.Value;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,9 +20,11 @@ public class UserService {
     @Transactional
     int postSignUp(MultipartFile pic, SignUpPostReq p){
         String randFile=customFileUtils.makeRandomFileName(pic);
+        System.out.println(randFile);
         p.setPic(randFile);//위 메소드에 사진이 null이여도 null값을 반환하는 코드
         String hashPass= BCrypt.hashpw(p.getUpw(),BCrypt.gensalt());
         p.setUpw(hashPass);//암호화
+        System.out.println(p);
 
         int result=mapper.postUser(p);//위의 정보를 데이터 베이스에 저장
 
@@ -43,16 +43,18 @@ public class UserService {
     }
 
     public SignInRes postSignIn(SignInPostReq p){
+
         String uid=p.getUid();//유저가 입력한 아이디
+        System.out.println(p);
         User user=mapper.getUserId(uid);//해당 아이디로 가입된 유저가 있는지 확인
-        if(user==null){throw new RuntimeException("일치하는 회원이 없습니다.");}
+        if(user == null){throw new RuntimeException("일치하는 회원이 없습니다.");}
                                         //메세지를 남기며 오류 던짐
         else if(!BCrypt.checkpw(p.getUpw(), user.getUpw())){
                                 //방금 입력, 아이디로 조회한 비번
             throw new RuntimeException("비밀번호를 다시 확인하세요.");
         }
         return SignInRes.builder()
-                .userId(user.getUserId())
+                .signedUserId(user.getUserId())
                 .nm(user.getNm())
                 .pic(user.getPic())
                 .build();

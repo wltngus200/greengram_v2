@@ -1,7 +1,9 @@
 package com.green.greengram.feed;
 
 import com.green.greengram.common.CustomFileUtils;
+import com.green.greengram.common.GlobalConst;
 import com.green.greengram.feed.model.*;
+import com.green.greengram.feedcomment.model.FeedCommentGetRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,9 +47,27 @@ public class FeedService {
     }
     List<FeedGetRes> getFeed(FeedGetReq p) { //페이지값 입력
         List<FeedGetRes> list = mapper.getFeed(p);//리턴해줄 리스트를 만드는 것
-        for (FeedGetRes res : list){
+        for (FeedGetRes res : list) {
+            //사진 리스트
             List<String> pics = mapper.getFeedPicsByFeedId(res.getFeedId());
             res.setPics(pics);
+
+            List<FeedCommentGetRes> commentList = mapper.getFeedCommentTopBy4ByFeedId(res.getFeedId());
+            if(commentList.size()== GlobalConst.COMMENT_SIZE_PER_FEED){
+                //isMoreComment는 왜 int야....
+                res.setIsMoreComment(1);
+                commentList.remove(commentList.size()-1);
+            }
+            res.setComments(commentList);
+            //피드마다 댓글이 몇개 있는지 알 수 없다
+            //내가 3개 필요하다고 3개 들고왔을 때 댓글이 더 있을지 없을지 알 수 없다
+            //댓글을 4개 가져오는 이유 3개보다 더 있나 없나 파악 0123은 그대로 comment에 들어감
+            //댓글을 4개 가져왔는데 3개만 나온다 댓글 더 보기 버튼 x
+                            // 4개만 있다 1개 버리고 더보기 버튼 O
+            //댓글 더보기 기능(페이징 처리, 부분만, 트래픽 발생X)
+            // 아주 많으면 더 보기를 눌러도 일부만 가져옴
+            // 피드에 달린 댓글을 4개 가져오기 시도 -> 4개가 넘어온다 1개는 버리고 3개만 가져옴
+            // 댓글이 더 있었을 경우만 버튼을 생성
         }
         return list;
     }

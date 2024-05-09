@@ -4,16 +4,11 @@
 <mapper namespace="com.green.greengram.user.UserMapper">
     <insert id="postUser" keyProperty="userId" useGeneratedKeys="true">
         INSERT INTO user
-        (uid, upw, nm)
+        (uid, upw, nm, pic)
         VALUES
-        (#{uid}, #{upw}, #{nm})
+        (#{uid}, #{upw}, #{nm}, #{pic})
     </insert>
 
-    <select id="postSignIn">
-        SELECT user_id AS userId, uid, nm, pic
-        FROM user
-        WHERE uid=#{uid}
-    </select>
 
     <select id="getUserId">
         SELECT user_id AS userId, uid, upw, nm, pic, created_at AS createdAt, updated_at AS updatedAt

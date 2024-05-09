@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SignInRes {
     @Schema(example = "1", description = "USER PK")
-    private long userId;
+    private long signedUserId;
     @Schema(example = "홍길동", description = "USER NAME")
     private String nm;
     @Schema(example = "djh43jhdbqh1-@d34", description = "USER IMAGE")
