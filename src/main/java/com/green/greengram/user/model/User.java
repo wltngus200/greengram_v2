@@ -12,6 +12,6 @@ public class User {
     private String nm;
     private String pic;
     private String createdAt;
-    private String updateAt;
+    private String updatedAt;
 
 }

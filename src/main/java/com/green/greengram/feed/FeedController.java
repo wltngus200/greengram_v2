@@ -26,7 +26,7 @@ public class FeedController {
         FeedPostRes result=service.postFeedPics(pics, p);//들어온 정보를 Service로 보냄
 
         return ResultDto.<FeedPostRes>builder()
-                .status(HttpStatus.OK)
+                .statusCode(HttpStatus.OK)
                 .resultMsg("성공적으로 업로드 하였습니다.")
                 .resultData(result)
                 .build();
@@ -36,7 +36,7 @@ public class FeedController {
         //리턴타입을 프론트가 요구하는 방향으로 맞춰주어야 함
         List<FeedGetRes> result = service.getFeed(p);
         return ResultDto.<List<FeedGetRes>>builder()
-                .status(HttpStatus.OK)
+                .statusCode(HttpStatus.OK)
                 .resultMsg("성공적으로 업로드 하였습니다.")
                 .resultData(result)
                 .build();

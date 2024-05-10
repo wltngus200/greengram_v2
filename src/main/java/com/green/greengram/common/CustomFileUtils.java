@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 public class CustomFileUtils {
     /*
-    @Value("${file.dir}")//dir은 디렉터 yaml의 파일을 담겠다 네이밍 맞추기
+    @Value("${file.dir}")//dir은 디렉토리 yaml에 명시된 경로에 파일을 담겠다 네이밍 맞추기
     private String uploadPath; //여기에 =주소값 하려면 \\로 슬래시 넣기(이스케이프 문자)
     //내용이 자바안에 없다. 장점: 값을 바꿨을 때 컴파일이 필요 없다(값을 참조할 것이기 때문)
     //객체화가 되고 나서야 값을 넣을 수 있기 때문에 final은 붙일 수 없다
@@ -42,7 +42,7 @@ public class CustomFileUtils {
 
     //파일 명에서 확장자 얻어오기
     public String getExt(String fileName){//d2.dt3ra.jpg
-        int idx=fileName.indexOf(".");//내가 찾는 문자열이 있다면 양수값 없으면 음수값
+        int idx=fileName.lastIndexOf(".");//내가 찾는 문자열이 있다면 양수값 없으면 음수값
         //indexOf는 왼쪽에서부터 찾음 <-> lastIndexOf 오른쪽부터 찾음
         return fileName.substring(idx);
     }

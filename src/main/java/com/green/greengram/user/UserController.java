@@ -7,6 +7,7 @@ import com.green.greengram.user.model.SignUpPostReq;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/user")
-
+@Slf4j
 @Tag(name="USER CONTROLLER", description = "USER CR(sign-in, sign=up)")
 public class UserController {
     private final UserService service;
@@ -24,7 +25,7 @@ public class UserController {
     public ResultDto<Integer> postUser(@RequestPart MultipartFile pic, @RequestPart SignUpPostReq p){
         int result=service.postSignUp(pic, p);
         return ResultDto.<Integer>builder()
-                .status(HttpStatus.OK)
+                .statusCode(HttpStatus.OK)
                 .resultMsg("회원가입 성공")
                 .resultData(result)
                 .build();
@@ -32,11 +33,10 @@ public class UserController {
     @PostMapping("sign-in")
     @Operation(summary="인증처리")
     public ResultDto<SignInRes> postSignIn(@RequestBody SignInPostReq p){
-        System.out.println(p);
         SignInRes result=service.postSignIn(p);
-
+        log.info("{}",result);
         return ResultDto.<SignInRes>builder()
-                .status(HttpStatus.OK)
+                .statusCode(HttpStatus.OK)
                 .resultMsg("로그인 완료되었습니다.")
                 .resultData(result)
                 .build();

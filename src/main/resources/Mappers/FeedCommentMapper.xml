@@ -11,7 +11,19 @@
     </insert>
 
     <delete id="deleteFeedComment">
-        DELETE FROM feed_comment
+        DELETE
+        FROM feed_comment
         WHERE feed_comment_id=#{feedCommentId} AND user_id=#{signedUserId}
     </delete>
+
+    <select id="getFeedComment">
+        SELECT A.feed_comment_id AS feedCommentId, B.user_id AS writerId,
+            B.nm AS writerNm, B.pic AS writerPic, A.comment,
+            A.created_at AS createdAt
+        FROM feed_comment A
+        INNER JOIN user B
+        ON B.user_id=A.user_id
+        WHERE A.feed_id=#{feedId}
+        ORDER BY A.created_at
+    </select>
 </mapper>

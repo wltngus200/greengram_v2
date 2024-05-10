@@ -29,7 +29,7 @@ public class FeedFavoriteController {
         int result=service.toggleFavorite(p);
         //result 0=not 좋아요 취소, result 1=좋아요 처리
         return ResultDto.<Integer>builder()
-                .status(HttpStatus.OK)
+                .statusCode(HttpStatus.OK)
                 .resultMsg(result==1?"좋아요 처리":"좋아요 취소")
                 .resultData(result)
                 .build();

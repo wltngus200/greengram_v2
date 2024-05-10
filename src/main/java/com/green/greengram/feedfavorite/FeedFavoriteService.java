@@ -18,7 +18,7 @@ public class FeedFavoriteService {
         int delAffectedRow=mapper.delFeedFavorite(p);
         if(delAffectedRow==1){
             return 0;
-        }
+        }//토글 처리를 하지 않고 프론트에서 직접적으로 날리는 것도 가능
         return mapper.insFeedFavorite(p);
     }
 
