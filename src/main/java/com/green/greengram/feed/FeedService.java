@@ -20,10 +20,11 @@ public class FeedService {
 
     @Transactional
     FeedPostRes postFeedPics(List<MultipartFile> pics, FeedPostReq p){//사진이 없을 가능성은??//그런 코드를 넣었나?
-        int result=mapper.postFeed(p); //사진을 제외한 내용과 위치정보는 매퍼로 보내 feed에 업로드
+        int result=mapper.postFeed(p); //사진을 제외한 내용과 위치정보는 매퍼로 보내 feed에 업로드+영향 받은 행 값
 
         //사진 다루기
         FeedPicPostDto postDto= FeedPicPostDto.builder().feedId(p.getFeedId()).build(); //feed_id값 주입
+        //Dto는 DB에 정보를 전달하기 위한 것= n번 피드에 들어가는 사진들의 이름이다!
 
         try{
             String path=String.format("feed/%d", p.getFeedId());
@@ -33,7 +34,7 @@ public class FeedService {
                 String randFile=customFileUtils.makeRandomFileName(pic);//랜덤이름
                 String target=String.format("%s/%s", path, randFile);
                 customFileUtils.transferTo(pic, target);
-                postDto.getFileNames().add(randFile);//Dto가 가진 리스트에 넣어준다
+                postDto.getFileNames().add(randFile);//Dto가 가진 리스트에 .add(넣어준다)
             } int uppics=mapper.postFeedPics(postDto);
         //폴더에 저장
         }catch(Exception e){

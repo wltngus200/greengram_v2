@@ -15,7 +15,7 @@
         (feed_id, pic)
         VALUES
         <foreach item="a" collection="fileNames" separator=",">
-            (#{feedId}, #{a})
+        (#{feedId}, #{a})
         </foreach>
         <!--item아니고 pic으로 하면??-->
     </insert>
