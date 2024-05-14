@@ -25,5 +25,6 @@
         ON B.user_id=A.user_id
         WHERE A.feed_id=#{feedId}
         ORDER BY A.created_at
+        <!--선생님은 LIMIT를 주심-->
     </select>
 </mapper>

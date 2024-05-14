@@ -23,7 +23,7 @@ public class FeedService {
         int result=mapper.postFeed(p); //사진을 제외한 내용과 위치정보는 매퍼로 보내 feed에 업로드+영향 받은 행 값
 
         //사진 다루기
-        FeedPicPostDto postDto= FeedPicPostDto.builder().feedId(p.getFeedId()).build(); //feed_id값 주입
+        FeedPostPicReq postDto= FeedPostPicReq.builder().feedId(p.getFeedId()).build(); //feed_id값 주입
         //Dto는 DB에 정보를 전달하기 위한 것= n번 피드에 들어가는 사진들의 이름이다!
 
         try{
@@ -67,7 +67,7 @@ public class FeedService {
                 if(commentList.size()== GlobalConst.COMMENT_SIZE_PER_FEED){
                     //isMoreComment는 왜 int야....
                     res.setIsMoreComment(1);
-                    commentList.remove(commentList.size()-1);
+                    commentList.remove(commentList.size()-res.getIsMoreComment());//윗줄에서 1로 set했으니
                 }
                 res.setComments(commentList);
             }

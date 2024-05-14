@@ -30,7 +30,7 @@ public class FeedCommentService {
 //                //지운 리스트를 저장하고 싶은데
         commentList=commentList.subList((GlobalConst.COMMENT_SIZE_PER_FEED-1),commentList.size());
                 //commentList.subList(fromIdx, toIdx)->리턴도 리스트니 얘가 n부터 m까지를 리턴 해주지 않을까
-                //근데 왜 4번부터 받아와......? 이어붙일 순 없어??? 댓글 ~개 더 보기???
+                //paging은 지우고 다시 세팅한다면, 얘는 추가로 꺼내 온 걸 이어붙이는 느낌으로 이해 함
         return commentList;
     }
 }
