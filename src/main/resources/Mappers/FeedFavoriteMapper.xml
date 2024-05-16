@@ -16,10 +16,4 @@
         WHERE feed_id=#{feedId} AND user_id=#{userId}
     </delete>
 
-    <select id="toggleFavorite">
-        SELECT COUNT(
-        FROM feed_favorite
-        WHERE feed_id=#{feedId} and user_id=#{userId}
-    </select>
-
 </mapper>

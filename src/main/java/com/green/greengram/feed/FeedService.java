@@ -35,7 +35,7 @@ public class FeedService {
                 String target=String.format("%s/%s", path, randFile);
                 customFileUtils.transferTo(pic, target);
                 postDto.getFileNames().add(randFile);//Dto가 가진 리스트에 .add(넣어준다)
-            } int uppics=mapper.postFeedPics(postDto);
+            } int upPics=mapper.postFeedPics(postDto);
         //폴더에 저장
         }catch(Exception e){
             e.printStackTrace();

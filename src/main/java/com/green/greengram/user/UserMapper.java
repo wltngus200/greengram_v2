@@ -9,6 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UserMapper {
     int postUser(SignUpPostReq p);
-    SignInRes postSignIn (SignInPostReq p);
+    //SignInRes postSignIn (SignInPostReq p);
     User getUserId(String p);
 }
