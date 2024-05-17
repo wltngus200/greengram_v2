@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -28,7 +29,7 @@
         INNER JOIN user B
         ON A.writer_id=B.user_id
         LEFT JOIN feed_favorite C<!--Inner일 경우 새로운 건 볼 수 없고 내가 좋아요 누른 것 만 나옴-->
-        ON A.feed_id=C.feed_id AND c.user_id=#{signedUserId}
+        ON A.feed_id=C.feed_id AND C.user_id=#{signedUserId}
         <!--좋아요의 여부를 표시하는 컬럼 추가-->
         <!--유저 아이디를 조인 조건으로 두지 않으면 전체 사용자가 좋아요 누른 것-->
         ORDER BY A.feed_id DESC
