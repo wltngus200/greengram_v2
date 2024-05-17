@@ -67,7 +67,9 @@ public class FeedService {
                 if(commentList.size()== GlobalConst.COMMENT_SIZE_PER_FEED){
                     //isMoreComment는 왜 int야....
                     res.setIsMoreComment(1);
-                    commentList.remove(commentList.size()-res.getIsMoreComment());//윗줄에서 1로 set했으니
+                    commentList.remove(commentList.size()-1);
+                    //setIsMoreComment가 boolean으로 바뀔 수도 있고
+                    //코멘트가 더 있다 <-> 마지막 인덱스를 구하기 위한 1 이기 때문에 분리 해서 쓰기
                 }
                 res.setComments(commentList);
             }
