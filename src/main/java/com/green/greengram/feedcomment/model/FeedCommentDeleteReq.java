@@ -1,8 +1,6 @@
 package com.green.greengram.feedcomment.model;
 
 import lombok.Getter;
-import lombok.Setter;
-
 import java.beans.ConstructorProperties;
 
 @Getter
