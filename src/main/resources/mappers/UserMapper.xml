@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.green.greengram.user.UserMapper">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.greengramver2.user.UserMapper">
+
     <insert id="postUser" keyProperty="userId" useGeneratedKeys="true">
         INSERT INTO user
         (uid, upw, nm, pic)
@@ -10,11 +11,12 @@
         (#{uid}, #{upw}, #{nm}, #{pic})
     </insert>
 
-
     <select id="getUserId">
         SELECT user_id AS userId, uid, upw, nm, pic, created_at AS createdAt, updated_at AS updatedAt
         FROM user
         WHERE uid=#{uid}
     </select>
 
+
 </mapper>
+
