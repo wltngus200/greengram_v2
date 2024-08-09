@@ -1,5 +1,6 @@
 package com.green.greengram.feedcomment.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import java.beans.ConstructorProperties;
 
